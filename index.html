@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Iutf-8" />
+	<title> Más Me Dan  - Panamá</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />	
+	<meta name="description" content="Casa de Empeños Más Me Dan -  Panamá" />
+	
+	<!-- Included CSS files -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700,700italic" rel="stylesheet" type="text/css" />
+	<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon2.ico" />
+	
+	<!-- Included JS files -->
+	<script type="text/javascript" src="js/modernizr.custom.77109.js"></script>
+	
+ 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" media="all" href="css/ie.css" />
+	<![endif]-->
+	<style>
+		.cell-map{height:300px};
+	</style>
+</head>
+<body>
+	<!-- RIGHT SIDE -->
+	<div class="center-wrap">
+		<div class="inner fadeInRight">
+			<!-- Contenido -->
+				<div id="main">
+					<!-- Surcuales -->
+					<section id="sucursales" class="main-section">
+					<div class="service-icon">
+						<i class="icon ion-android-note" aria-hidden="true"></i>
+					</div>
+                    <h1>Listado de Sucursales</h1>
+					<p>Consulte nuestro listado de sucursales, seguro hay alguna cercana a usted.<br><br><strong> Retiros de lunes a sábados de 9:00am a 6:00pm.</strong></p>
+					<table border="0" cellspacing="0" cellpadding="0" class="sucursales"><colgroup><col width="150px" /><col width="300px" /><col width="100px" /><col width="150px"></colgroup>
+                        <tbody>
+                        <tr>
+                        	<td class="tableLeft"><i style="font-size:16px;margin-right:10px;" class="icon ion-home" aria-hidden="true"></i><strong>Sucursal</strong></td>
+                        	<td class="tableMiddle"><i style="font-size:16px;margin-right:10px;" class="icon ion-android-location" aria-hidden="true"></i><strong>Dirección</strong></td>
+                        	<td class="tableMRight"><i style="font-size:16px;margin-right:10px;" class="icon ion-android-call" aria-hidden="true"></i><strong>Ext.</strong></td>                                              
+                        	<td class="tableRight"><i style="font-size:16px;margin-right:10px;" class="icon ion-android-clock" aria-hidden="true"></i><strong>Horario</strong></td>
+                        </tr>
+                        <tr class="header">
+                        	<td>24 de Diciembre - La Doña</td>
+                    		<td>Centro Comercial La Doña, al lado del Súper 99.</td>
+                    		<td class="cellMRight">2300</td>
+                    		<td class="cellRight">24 horas</td>
+                        </tr>
+                        <tr> 
+                        	<td colspan="4" class="cell-map"></td>
+                        </tr>
+                        <tr class="header">
+                        	<td>Acacias</td>
+                        	<td>Centro Comercial Las Acacias al lado del Xtra.</td>
+                        	<td class="cellMRight">3100</td>
+                        	<td class="cellRight">L-S: 8:00am-8:15pm D: 9:00am-6:15pm</td>
+                        </tr>
+                        <tr>
+
+                        	<td colspan="4" class="cell-map"></td>
+                        </tr>
+                        </tbody>
+                	</table>
+				</section>
+				</div>
+			<!-- Footer -->
+			<footer class="site-footer"></footer>
+		</div>
+	</div>
+
+
+
+	<!-- Included JS files -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYWIGtupi5FGDJ7RDNHfVAxboXCIQG8xg"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	
+	<!-- Functions -->
+<!-- 
+	  <script>
+    $('.clickme').click(function() {
+        //$(this.hash).slideToggle(500);
+        $('#slide-'+this.id).slideToggle(50);
+        return false;        
+    });
+  </script>
+ -->
+  <script>
+
+    $('.header').nextUntil('tr.header').slideToggle(0);
+	$('.header').click(function(){
+    	$(this).nextUntil('tr.header').slideToggle(10);
+    	var mapdiv = document.createElement('div');
+		mapdiv.id = 'map-canvas';
+		document.getElementByClass('.cell-map').appendChild(mapdiv);
+    	
+    	 
+	});
+  </script>
+ 
+ <script>    
+ 
+ 	var map;
+	function initialize() {
+ 		var mapOptions = {
+ 			zoom: 8,
+  	  		center: new google.maps.LatLng(-34.397, 150.644)
+ 	 	};
+ 		map = new google.maps.Map(document.getElementById('map-canvas'),
+    		mapOptions);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+//   	var map = new google.maps.Map(document.getElementById('map'), {
+//       zoom: 8,
+//       center: new google.maps.LatLng(8.5, -79.8),
+//       mapTypeId: google.maps.MapTypeId.ROADMAP
+//     });
+// Sucursal,Latitud y longitud, grupo, region
+// 		var locations = [
+// 				['24 de Diciembre - La Doña',9.1035,-79.368897],
+// 				['Acacias',9.05959,-79.4277],
+// 				['Albrook',8.9744,-79.550802],
+// 				['Arraiján',8.956693,-79.653541],
+// 				['Bugaba',8.517896,-82.619862],
+// 				['Calidonia',8.965147,-79.539644],
+// 				['Central',8.956993,-79.541376],
+// 				['Chanis',9.017867,-79.484852],
+// 				['China Town',9.045236, -79.453228],
+// 				['Chiriquí - San Mateo',8.426564,-82.435246],
+// 				['Chitré',7.964401,-80.432214],
+// 				['Chorrera',8.887508, -79.772838],
+// 				['Chorrera Centro',8.879086,-79.781828],
+// 				['Colón - 4 Altos',9.338636,-79.884131],
+// 				['Concordia',8.98472,-79.525955],
+// 				['Coronado',8.543867,-79.914229],
+// 				['David',8.433147,-82.423856],
+// 				['Dorado',9.01009,-79.536323],
+// 				['Dorado 2',9.007594,-79.533508],
+// 				['La Cabima',9.10899,-79.536921],
+// 				['Los Andes',9.048973,-79.506771],
+// 				['Los Andes Metro',9.049874,-79.508217],
+// 				['Monte Oscuro',9.026075,-79.505893],
+// 				['Paraíso',9.031081,-79.501606],
+// 				['Peatonal',8.960385,-79.541144],
+// 				['Pedregal',9.055932, -79.433455],
+// 				['Penónome',8.508441,-80.362369],
+// 				['Plaza Carolina',9.028154,-79.478696],
+// 				['Río Abajo',9.013197,-79.50135],
+// 				['Sabanitas',9.347614,-79.806936],
+// 				['San Miguelito',9.029941,-79.506105],
+// 				['Santiago',8.097315,-80.979318],
+// 				['Transístmica',8.99585,-79.52804],
+// 				['Vía Argentina',8.988379,-79.524627],
+// 				['Vía Porras',8.993010, -79.517452],
+// 				['Villa Lucre',9.037628,-79.481168],
+// 				['Vista Alegre',8.925991,-79.711975],
+// 				['Vista Hermosa',8.998099,-79.519806],
+// 			];
+//  	var mmd_logo = {
+//    		url: 'http://map.masmedan.com/img/mmd.png',
+//     	scaledSize: new google.maps.Size(60, 20), //(width,height)
+//     	origin: new google.maps.Point(0,0), // The origin for this image is 0,0.
+//     	anchor: new google.maps.Point(30,10) // The anchor for this image.
+//     };
+// 	
+//   var infowindow = new google.maps.InfoWindow();
+//   var marker, i;
+//   var markers = new Array();
+// 
+// 
+// 	for (i = 0; i < locations.length; i++) {  
+//         marker = new google.maps.Marker({
+//         				position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+//         				map: map,
+//        				    icon: mmd_logo
+//         });
+//  
+//   			markers.push(marker);
+//     		
+//     		google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+//         		return function() {
+//         				infowindow.setContent(locations[i][0]);
+//         				infowindow.open(map, marker);
+//         		}
+//         })(marker, i));   
+//     		
+//     		google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+//         		return function() {
+//           			infowindow.close(map, marker);
+//         		}
+//       	})(marker, i));
+// 	}
+
+//---Centrear el mapa ---/// 
+//---/Centrear el mapa ---/// 
+</script>
+</script>
+	
+</body>
+</html>
